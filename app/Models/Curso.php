@@ -7,5 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Curso extends Model
 {
+    //añado permiso para manipular los campos de la tabla
+    protected $fillable = ['nombre', 'descripcion', 'imagen', 'duracion'];
     use HasFactory;
 }
