@@ -6,6 +6,8 @@ use App\Http\Controllers\MiControlador;
 use App\Http\Controllers\HeladeriaController;
 use App\Http\Controllers\ControladorPrecios;
 use App\Http\Controllers\CursoController;
+use App\Http\Controllers\DocenteController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -16,6 +18,10 @@ use App\Http\Controllers\CursoController;
 | contains the "web" middleware group. Now create something great!
 |
 */
+
+Route::get('/docentes/index', function(){
+    return view('docentes.index');
+});
 
 Route::get('/', function () {
     return view('cursos.bienvenido');
@@ -47,3 +53,5 @@ Route::get('/precios/{opc}', [ControladorPrecios::class,'precio']);
 Route::get('/iva/{nom}/{val}', [ControladorPrecios::class,'getIVA'] );
 
 Route::resource('cursos', CursoController::class);
+
+Route::Resource('docentes', DocenteController::class);
