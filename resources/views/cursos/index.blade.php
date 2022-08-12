@@ -10,9 +10,9 @@
     <div class="row">
         @foreach ($cursito as $item)
                 <div class="col-sm">
-                    <div class="card text-center" style="width: 18rem; margin: 50px;">
-                        <img class="card-img-top" src="{{ Storage::url($item->imagen) }}" alt="Card image cap" height="200px">
-                        <div class="card-body">
+                    <div class="card text-center" style="width: 15rem; margin: 50px;">
+                        <img class="card-img-top" src="{{ Storage::url($item->imagen) }}" alt="Card image cap" height="200px" width="200px">
+                        <div class="card-body">px
                             <h5 class="card-title">{{$item->nombre}}</h5>
                             {{-- <p class="card-text">Descripción: {{$item->descripcion}}</p>
                             <p class="card-text">Duración: {{$item->duracion}} horas</p> --}}

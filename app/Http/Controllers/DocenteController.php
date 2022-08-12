@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\storeDocenteRequest;
 use App\Models\Docentes;
 use Illuminate\Http\Request;
 
@@ -34,7 +35,7 @@ class DocenteController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(storeDocenteRequest $request)
     {
         $docentico = new Docentes();
         $docentico->nombre = $request->input('nombre');
@@ -47,7 +48,7 @@ class DocenteController extends Controller
             $docentico->documento = $request->file('documento')->store('public/docentes');
         }
         $docentico->save();
-        return 'guardado exitoso';
+        return view('docentes.add');
     }
 
     /**
@@ -58,7 +59,8 @@ class DocenteController extends Controller
      */
     public function show($id)
     {
-        return view('docentes.show');
+        $docentico = Docentes::find($id);
+        return view('docentes.show', compact('docentico'));
     }
 
     /**
@@ -69,7 +71,8 @@ class DocenteController extends Controller
      */
     public function edit($id)
     {
-        //
+        $docentico = Docentes::find($id);
+        return view('docentes.edit', compact('docentico'));
     }
 
     /**
@@ -81,7 +84,13 @@ class DocenteController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $docentico = Docentes::find($id);
+        $docentico->fill($request->except('imagen'));
+        if($request->hasFile('imagen')){
+            $docentico->imagen = $request->file('imagen')->store('public/docentes');
+        }
+        $docentico->save();
+        return view('docentes.edit2');
     }
 
     /**
@@ -92,6 +101,12 @@ class DocenteController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $docentico = Docentes::find($id);
+        $urlImagenBD = $docentico->imagen;
+        $nombreImagen = str_replace('public/', '\storage\\', $urlImagenBD);
+        $rutaCompleta = public_path(). $nombreImagen;
+        unlink($rutaCompleta);
+        $docentico -> delete();
+        return view('docentes.delete');
     }
 }

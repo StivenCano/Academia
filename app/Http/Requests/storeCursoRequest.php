@@ -24,10 +24,15 @@ class storeCursoRequest extends FormRequest
     public function rules()
     {
         return [
-            'nombre' => 'required|email:rfc',
-            'descripcion' => 'required|max:30',
-            'duracion' => 'integer',
-            'imagen' => 'required|image'
+            // 'nombre' => 'required|max:20',
+            // 'apellido' => 'required|max:20',
+            // 'tituloUniv' => 'required|max:30',
+            // 'edad' => 'integer',
+            // 'fecha_contrato' => 'date',
+            // 'documento' => 'required|mimes:pdf',
+            // // 'descripcion' => 'required|max:30',
+            // // 'duracion' => 'integer',
+            // 'imagen' => 'required|mimes:jpg|max:5mb'
         ];
     }
 }
