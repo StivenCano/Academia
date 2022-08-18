@@ -7,6 +7,7 @@
 <form action="/docentes/{{$docentico-> id}}" method="POST" enctype="multipart/form-data">
     @method('PUT')
     @csrf
+
     <br>
         <h2>Formulario de edición del docente</h2>
         <div class="form-group">
@@ -34,7 +35,7 @@
             <br>
             <iframe width="400" height="400" src="{{ Storage::url($docentico->documento) }}" frameborder="0"></iframe>
             <br>
-            <input id="documento" class="form-control"  type="file" name="documento" value="{{$docentico->documento}}">
+            <input id="documento" class="form-control"  type="file" name="documento" value="{{$docentico->documento}}" accept="application/pdf">
         </div>
         <div class="form-group">
             <label for="imagen">Cargue la nueva imagen del docente</label>
@@ -43,7 +44,7 @@
             <img class="card-img-top" src="{{ Storage::url($docentico->imagen) }}" alt="Card image cap" style="height: 150px; width: 150px;" >
             </div>
             <br>
-            <input id="imagen"  type="file" name="imagen">
+            <input id="imagen"  type="file" name="imagen" accept="image/jpeg, png">
 
         </div>
         <button class="btn btn-success" href="/docentes/{{}}" type="submit">Actualizar</button>

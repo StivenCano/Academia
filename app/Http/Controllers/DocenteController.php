@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\storeCursoRequest;
 use App\Http\Requests\storeDocenteRequest;
 use App\Models\Docentes;
 use Illuminate\Http\Request;
@@ -85,12 +86,12 @@ class DocenteController extends Controller
     public function update(Request $request, $id)
     {
         $docentico = Docentes::find($id);
-        $docentico->fill($request->except('imagen'));
+        $docentico->fill($request->except(['imagen', 'documento']));
         if($request->hasFile('imagen')){
             $docentico->imagen = $request->file('imagen')->store('public/docentes');
         }
-        $docentico->fill($request->except('documento'));
-        if($request->hasFile('documento')){
+
+        else if($request->hasFile('documento')){
             $docentico->documento = $request->file('documento')->store('public/docentes');
         }
 
