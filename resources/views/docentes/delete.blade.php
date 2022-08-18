@@ -3,7 +3,7 @@
 @section('titulo', 'Editar Curso')
 
 @section('contenido')
-<div class="alert alert-warning" role="alert">
+<div class="alert alert-danger" role="alert">
     Eliminado Exitosamente
   </div>
 @endsection

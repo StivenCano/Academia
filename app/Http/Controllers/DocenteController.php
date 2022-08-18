@@ -89,6 +89,11 @@ class DocenteController extends Controller
         if($request->hasFile('imagen')){
             $docentico->imagen = $request->file('imagen')->store('public/docentes');
         }
+        $docentico->fill($request->except('documento'));
+        if($request->hasFile('documento')){
+            $docentico->documento = $request->file('documento')->store('public/docentes');
+        }
+
         $docentico->save();
         return view('docentes.edit2');
     }
