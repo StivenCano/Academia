@@ -7,6 +7,7 @@ use App\Http\Controllers\HeladeriaController;
 use App\Http\Controllers\ControladorPrecios;
 use App\Http\Controllers\CursoController;
 use App\Http\Controllers\DocenteController;
+use App\Http\Controllers\StudentController;
 
 /*
 |--------------------------------------------------------------------------
@@ -55,3 +56,5 @@ Route::get('/iva/{nom}/{val}', [ControladorPrecios::class,'getIVA'] );
 Route::resource('cursos', CursoController::class);
 
 Route::Resource('docentes', DocenteController::class);
+
+route::resource('student', StudentController::class);
